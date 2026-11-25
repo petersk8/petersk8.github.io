@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedro Emilio Borrego Rached | Senior Full-Stack & Applied AI Engineer</title>
+    <meta name="description"
+        content="Senior Full-Stack Software Engineer, Applied AI & Cross-Platform Architect based in Spain (CET / EMEA Remote)." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0b1120;
+            --surface: #111827;
+            --surface-hover: #1a2436;
+            --border: #1f2937;
+            --text: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #38bdf8;
+            --accent-dark: #0284c7;
+            --badge-bg: rgba(56, 189, 248, 0.1);
+            --badge-border: rgba(56, 189, 248, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #7dd3fc;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(11, 17, 32, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* Layout */
+        main {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.65rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 5.5rem 0 4.5rem;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            color: var(--accent);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            max-width: 740px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.35rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0b1120;
+        }
+
+        .btn-primary:hover {
+            background: #7dd3fc;
+            color: #0b1120;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--surface-hover);
+            border-color: #374151;
+            color: var(--text);
+        }
+
+        /* Projects Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--badge-border);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .card-role {
+            font-size: 0.82rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.22rem 0.6rem;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: #d1d5db;
+        }
+
+        /* Experience */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .exp-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .exp-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .exp-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .exp-company {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .exp-list {
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.93rem;
+        }
+
+        .exp-list li {
+            margin-bottom: 0.45rem;
+        }
+
+        .exp-list strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .skill-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.35rem;
+        }
+
+        .skill-box h3 {
+            font-size: 0.95rem;
+            color: var(--accent);
+            margin-bottom: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* Education & Languages */
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edu-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .edu-list li {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.1rem 1.25rem;
+        }
+
+        .edu-title {
+            font-weight: 700;
+            font-size: 0.96rem;
+            color: var(--text);
+        }
+
+        .edu-meta {
+            font-size: 0.84rem;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 3.5rem 0 3rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-brand">Pedro Borrego</div>
+            <div class="nav-links">
+                <a href="#projects">Projects & AI</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Tech Stack</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="about">
+            <div class="availability">
+                <span class="dot"></span>
+                Valladolid, Spain (CET / EMEA) • Open to European Remote Roles (EU Work Authorized)
+            </div>
+            <h1>Pedro Emilio Borrego Rached</h1>
+            <div class="hero-subtitle">Senior Full-Stack Software Engineer | Applied AI & Cross-Platform Architect</div>
+            <p class="hero-desc">
+                10+ years of experience building scalable web platforms, Node.js Backend-for-Frontend (BFF) middleware,
+                and high-traffic OTT/Smart TV applications for global telecom platforms (Telefónica / Movistar TV).
+                Proven track record architecting cloud products on GCP (Cloud Run) and pioneering Applied AI
+                workflows—including Vertex AI, Google AI Studio, agentic coding orchestration (Antigravity IDE), local
+                multimodal LLMs, computer vision, and generative video pipelines.
+            </p>
+            <div class="cta-group">
+                <a href="mailto:petersk8@yahoo.com" class="btn btn-primary">Contact Me</a>
+                <a href="https://github.com/petersk8" target="_blank" rel="noopener" class="btn btn-secondary">GitHub
+                    Profile</a>
+                <!-- Sube tu CV en PDF como "resume.pdf" al mismo repositorio para activar este botón -->
+                <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary">Download Resume (PDF)</a>
+            </div>
+        </section>
+
+        <!-- PROJECTS & APPLIED AI -->
+        <section id="projects">
+            <h2>Featured Projects & Applied AI</h2>
+            <div class="grid">
+                <article class="card">
+                    <div>
+                        <div class="card-header">
+                            <h3>MusickLoud.xyz</h3>
+                            <a href="https://musickloud.xyz/" target="_blank" rel="noopener">Live ↗</a>
+                        </div>
+                        <div class="card-role">Founder & Lead Full-Stack Engineer (Apr 2026 – Present)</div>
+                        <p>
+                            Automated 24-genre scheduled music-video web platform built from zero to production on GCP
+                            Cloud Run. Features YouTube API quota optimization, smart caching, Google Apps Script
+                            automation, GitHub Actions CI/CD, and agentic AI delivery workflows.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Angular</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">GCP Cloud Run</span>
+                        <span class="tag">Tailwind</span>
+                        <span class="tag">GSAP</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div>
+                        <div class="card-header">
+                            <h3>ApexIGL — Multimodal AI Coach</h3>
+                        </div>
+                        <div class="card-role">System Architect & Applied AI Engineer</div>
+                        <p>
+                            Real-time, privacy-first tactical AI assistant running locally on Apple Silicon (M1) using
+                            quantized Vision-Language Models (Qwen2-VL-2B via MLX) and YOLO. Integrates live HDMI
+                            capture and OpenWrt UDP packet mirroring (iptables TEE) for low-latency callouts.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">MLX / Qwen2-VL</span>
+                        <span class="tag">YOLO</span>
+                        <span class="tag">Antigravity IDE</span>
+                        <span class="tag">OpenWrt</span>
+                        <span class="tag">Python</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div>
+                        <div class="card-header">
+                            <h3>Browser-Based AI DJ Mixer</h3>
+                        </div>
+                        <div class="card-role">Creator & Frontend Architect</div>
+                        <p>
+                            Web-based DJ mixing application featuring real-time client-side audio stem separation
+                            powered by ONNX Runtime Web, 3-band equalization, live audio effects, and hardware Web MIDI
+                            controller integration.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">ONNX Runtime Web</span>
+                        <span class="tag">Web Audio API</span>
+                        <span class="tag">Web MIDI</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div>
+                        <div class="card-header">
+                            <h3>Generative Video & Neural Restoration</h3>
+                        </div>
+                        <div class="card-role">AI Media Pipeline Architect</div>
+                        <p>
+                            Hybrid cloud and local generative video production pipelines (supporting a 9,000+ subscriber
+                            YouTube channel) and end-to-end neural archival video restoration workflows for analog
+                            footage remastering and upscaling.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Google AI Studio</span>
+                        <span class="tag">Google Flow</span>
+                        <span class="tag">Flux / LTX</span>
+                        <span class="tag">Wan2GP</span>
+                        <span class="tag">Video2X</span>
+                        <span class="tag">FFmpeg</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div>
+                        <div class="card-header">
+                            <h3>The PotCats</h3>
+                            <a href="https://www.thepotcats.com" target="_blank" rel="noopener">Live ↗</a>
+                        </div>
+                        <div class="card-role">Software Architect & Co-Founder (Aug 2021 – Present)</div>
+                        <p>
+                            Independent alternative-music platform with automated multi-platform API synchronization
+                            (Google/Gemini, YouTube, Meta/Facebook, Instagram, Threads, X), custom backend endpoints,
+                            and full-ecosystem backup & recovery.
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">React / Next.js</span>
+                        <span class="tag">Node.js / Express</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Gemini API</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <div class="exp-item">
+                    <div class="exp-top">
+                        <div class="exp-title">Senior Cross-Platform JavaScript & BFF Developer</div>
+                        <div class="exp-date">Jun 2019 – Present</div>
+                    </div>
+                    <div class="exp-company">ALTEN (Telefónica / Movistar TV Global I+D) • Remote, Spain</div>
+                    <ul class="exp-list">
+                        <li><strong>Global OTT Architecture:</strong> Architect, develop, and maintain core features for
+                            Telefónica’s global Movistar TV Smart TV and Android TV Set-Top Box (STB) apps across
+                            resource-constrained devices.</li>
+                        <li><strong>Node.js BFF Middleware:</strong> Design and maintain Backend-for-Frontend
+                            integrations, optimizing API orchestration, payloads, and fault tolerance for global-scale
+                            streaming traffic.</li>
+                        <li><strong>Engineering Quality:</strong> Lead peer code reviews, write comprehensive unit test
+                            suites (Jest.js), and optimize cross-platform rendering pipelines (ES6+, WebGL, LESS).</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-top">
+                        <div class="exp-title">AI Training & Code Evaluation Specialist (Contractor)</div>
+                        <div class="exp-date">Nov 2026 – Present</div>
+                    </div>
+                    <div class="exp-company">Alignerr (Labelbox) • Remote</div>
+                    <ul class="exp-list">
+                        <li><strong>LLM Engineering & Evaluation:</strong> Evaluate, debug, and refine LLM-generated
+                            software code, architectural solutions, and multimodal AI outputs to strengthen model
+                            reasoning and production safety.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-top">
+                        <div class="exp-title">Lead Frontend Developer</div>
+                        <div class="exp-date">Aug 2018 – Jun 2019</div>
+                    </div>
+                    <div class="exp-company">Second Window (Client: VASS / Telefónica) • Spain</div>
+                    <ul class="exp-list">
+                        <li>Led frontend development and microservices API integration for enterprise Telefónica web
+                            applications using JavaScript, Web Components, Node.js, Pug, and Gulp.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-top">
+                        <div class="exp-title">Full-Stack Web & Android Developer</div>
+                        <div class="exp-date">Jul 2017 – Mar 2018</div>
+                    </div>
+                    <div class="exp-company">Canarias.com • Spain</div>
+                    <ul class="exp-list">
+                        <li>Developed, deployed, and maintained high-traffic tourism portals (<a
+                                href="https://corp.canarias.com/" target="_blank" rel="noopener">corp.canarias.com</a>,
+                            <a href="https://www.tenerife.com" target="_blank" rel="noopener">tenerife.com</a>) and the
+                            native Android app using C#, ASP.NET MVC, Java/Android, PHP, and SQL Server.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-top">
+                        <div class="exp-title">Software Engineer</div>
+                        <div class="exp-date">Jul 2015 – Jun 2017</div>
+                    </div>
+                    <div class="exp-company">Inmediatamente Web SL • Spain</div>
+                    <ul class="exp-list">
+                        <li>Full-stack web development, backend middleware, and automated server data-processing scripts
+                            for <a href="https://misterdomain.eu/en/" target="_blank" rel="noopener">misterdomain.eu</a>
+                            using ASP.NET, C#, PHP, JavaScript, and XML.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <h2>Core Technical Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <h3>Frontend & UI</h3>
+                    <div class="tags">
+                        <span class="tag">JavaScript (ES6+)</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Angular</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">WebGL</span>
+                        <span class="tag">GSAP</span>
+                        <span class="tag">Web Components</span>
+                        <span class="tag">ONNX Runtime Web</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3>Backend & Data</h3>
+                    <div class="tags">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">BFF Architecture</span>
+                        <span class="tag">REST APIs</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">C# / ASP.NET MVC</span>
+                        <span class="tag">MySQL / MariaDB</span>
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">Redis</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3>Applied AI & Media</h3>
+                    <div class="tags">
+                        <span class="tag">Google AI Studio</span>
+                        <span class="tag">Vertex AI</span>
+                        <span class="tag">Gemini API</span>
+                        <span class="tag">Antigravity IDE</span>
+                        <span class="tag">Ollama / MLX</span>
+                        <span class="tag">Qwen2-VL</span>
+                        <span class="tag">YOLO / PyTorch</span>
+                        <span class="tag">FFmpeg</span>
+                    </div>
+                </div>
+                <div class="skill-box">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="tags">
+                        <span class="tag">GCP Cloud Run</span>
+                        <span class="tag">Google Apps Script</span>
+                        <span class="tag">GitHub Actions</span>
+                        <span class="tag">Jest.js</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">OpenWrt / Linux</span>
+                        <span class="tag">Agile / Scrum</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & LANGUAGES -->
+        <section id="education">
+            <h2>Education, Google Skills & Languages</h2>
+            <div class="two-col">
+                <ul class="edu-list">
+                    <li>
+                        <div class="edu-title">Google Cloud Skills Boost (Google Skills)</div>
+                        <div class="edu-meta">Build and Modernize Applications With Generative AI • In Progress (2026)
+                        </div>
+                        <div class="edu-desc">Integrating Vertex AI and Generative AI into cloud architectures,
+                            responsible AI practices, and connecting edge hardware nodes (Android TV / Mi Box) with
+                            Google Cloud AI services.</div>
+                    </li>
+                    <li>
+                        <div class="edu-title">Universidad de Oriente (Venezuela)</div>
+                        <div class="edu-meta">Computer Engineering • 1999 – 2009 (9/10 semesters completed)</div>
+                    </li>
+                </ul>
+
+                <ul class="edu-list">
+                    <li>
+                        <div class="edu-title">Specialized Certifications</div>
+                        <div class="edu-desc" style="margin-top: 0.35rem;">
+                            • <strong>Udacity:</strong> Intro to Deep Learning with PyTorch (2023)<br />
+                            • <strong>TrainingIT:</strong> React Advanced Patterns & Components (2019)<br />
+                            • <strong>Udacity:</strong> JavaScript ES6 (2019) & Advanced Android Dev (2018)
+                        </div>
+                    </li>
+                    <li>
+                        <div class="edu-title">Languages</div>
+                        <div class="edu-desc" style="margin-top: 0.35rem;">
+                            • <strong>Spanish:</strong> Native<br />
+                            • <strong>English:</strong> Professional Working Proficiency (Technical & Conversational —
+                            EU Remote Ready)
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p><strong>Pedro Emilio Borrego Rached</strong> — Senior Full-Stack & Applied AI Engineer</p>
+        <div class="footer-links">
+            <a href="mailto:petersk8@yahoo.com">petersk8@yahoo.com</a>
+            <a href="https://github.com/petersk8" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://musickloud.xyz/" target="_blank" rel="noopener">MusickLoud.xyz</a>
+            <a href="https://www.thepotcats.com" target="_blank" rel="noopener">The PotCats</a>
+        </div>
+        <p style="font-size: 0.8rem;">Valladolid, Spain (CET / EMEA Remote)</p>
+    </footer>
+
+</body>
+
+</html>
